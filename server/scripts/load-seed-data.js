@@ -11,7 +11,7 @@ client.query(`
   VALUES ($1, $2)
   RETURNING id;
 `,
-['avanvalk', 'drew']
+['avanvalk', 'drewby']
 )
   .then(result => {
     const profile = result.rows[0];

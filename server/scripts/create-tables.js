@@ -6,7 +6,7 @@ client.query(`
     username VARCHAR(256) NOT NULL,
     password VARCHAR(256) NOT NULL
   );
-  CREATE TABLE IF NOT EXISTS dpg (
+  CREATE TABLE IF NOT EXISTS dog (
     id SERIAL PRIMARY KEY,
     name VARCHAR(256) NOT NULL,
     type VARCHAR(32) NOT NULL,
