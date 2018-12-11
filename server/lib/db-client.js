@@ -2,7 +2,7 @@ const pg = require('pg');
 
 // As we move to into deployment, this value will not
 // be hard-coded, but instead come from environment configuration
-const DATABASE_URL = 'postgres://postgres:drewby864@localhost:5432/school';
+const DATABASE_URL = 'postgres://postgres:drewby864@localhost:5432/goals';
 // on windows, linux, or other systems where you need to 
 // specify username and password
 // const databaseUrl = 'postgres://<username>:<password>@localhost:5432/liveable_cities';
