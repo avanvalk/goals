@@ -51,4 +51,13 @@ export default {
           });
       });
     },
+  getPets() {
+      return fetch('/api/pets', getOptions('GET'))
+        .then(response => response.json());      
+  },
+    
+  addPet(pet) {
+      return fetch('/api/pets', getOptions('POST', pet))
+        .then(response => response.json());
+  }
 };
