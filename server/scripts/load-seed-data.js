@@ -1,9 +1,9 @@
 const client = require('../lib/db-client');
 
 const dogs = [
-  { name: 'Niko', type: 'Shiba' },
-  { name: 'Potato', type: 'Lab' },
-  { name: 'Thor', type: 'Retriever' }
+  { name: 'Clean', type: 'gutters.' },
+  { name: 'Rake', type: 'leaves.' },
+  { name: 'Wash', type: 'dishes.' }
 ];
 
 client.query(`

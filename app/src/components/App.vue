@@ -6,7 +6,7 @@
       </span>
       <nav v-if="user">
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/dogs">Dogs</RouterLink>
+        <RouterLink to="/dogs">Goals</RouterLink>
         <a href="#" @click="handleLogout">Logout</a>
       </nav>
     </header>

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2>Dogs-R-Us!</h2>
+    <h2>Bootcamp Week 3 (goals)</h2>
     <p>
     </p>
   </section>

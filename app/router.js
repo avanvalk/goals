@@ -1,12 +1,12 @@
 import VueRouter from 'vue-router';
 import Home from './components/home/Home.vue';
-import Students from './components/students/Students.vue';
+import Dogs from './components/dogs/Dogs.vue';
 
 export default new VueRouter({
 
-    routes: [
+  routes: [
     { path: '/', component: Home },
-    { path: '/students', component: Students },
+    { path: '/dogs', component: Dogs },
     { path: '*', redirect: '/' }
   ]
 });
