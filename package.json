@@ -1,0 +1,21 @@
+{
+  "name": "goals",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:app": "cd app && npm i && npm test && cd ..",
+    "test:server": "cd server && npm i && npm test && cd ..",
+    "test": "npm run test:app && npm run test:server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avanvalk/goals.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avanvalk/goals/issues"
+  },
+  "homepage": "https://github.com/avanvalk/goals#readme"
+}
