@@ -1,6 +1,7 @@
 
 const router = require('express').Router();
 const client = require('../db-client');
+const bcrypt = require('bcryptjs');
 
 router
   .post('/signup', (req, res) => {
@@ -27,11 +28,11 @@ router
         }
 
         client.query(`
-          INSERT into profile (username, password)
+          INSERT into profile (username, hash)
           VALUES ($1, $2)
           RETURNING id, username;
         `,
-        [username, password]
+        [username, bcrypt.hashSync(password, 8)]
         )
           .then(result => {
             res.json(result.rows[0]);

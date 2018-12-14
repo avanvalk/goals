@@ -1,4 +1,5 @@
 const client = require('../lib/db-client');
+const bcrypt = require('bcryptjs');
 
 const dogs = [
   { name: 'Clean', type: 'gutters.' },
@@ -11,7 +12,7 @@ client.query(`
   VALUES ($1, $2)
   RETURNING id;
 `,
-['avanvalk', 'drewby']
+['avanvalk', bcrypt.hashSync('drewby', 8)]
 )
   .then(result => {
     const profile = result.rows[0];
