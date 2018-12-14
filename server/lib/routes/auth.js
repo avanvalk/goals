@@ -2,15 +2,13 @@
 const router = require('express').Router();
 const client = require('../db-client');
 const bcrypt = require('bcryptjs');
-
-const jwt = require('jsonwebtoken');
-const APP_SECRET = 'CHANGEMENOW';
+const jwt = require('../jwt');
 
 function getProfileWithToken(profile) {
   return {
     id: profile.id,
     username: profile.username,
-    token: jwt.sign({ id: profile.id }, APP_SECRET)
+    token: jwt.sign({ id: profile.id })
   };
 }
 
