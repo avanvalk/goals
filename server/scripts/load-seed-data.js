@@ -8,7 +8,7 @@ const dogs = [
 ];
 
 client.query(`
-  INSERT INTO profile (username, password)
+  INSERT INTO profile (username, hash)
   VALUES ($1, $2)
   RETURNING id;
 `,

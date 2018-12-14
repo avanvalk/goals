@@ -3,6 +3,9 @@ const router = require('express').Router();
 const client = require('../db-client');
 const bcrypt = require('bcryptjs');
 
+const jwt = require('jsonwebtoken');
+const APP_SECRET = 'CHANGEMENOW';
+
 router
   .post('/signup', (req, res) => {
 
@@ -35,7 +38,9 @@ router
         [username, bcrypt.hashSync(password, 8)]
         )
           .then(result => {
-            res.json(result.rows[0]);
+            const profile = result.rows[0];
+            profile.token = jwt.sign({ id: profile.id }, APP_SECRET);
+            res.json(profile);
           });
       });
   })
@@ -51,14 +56,15 @@ router
     }
 
     client.query(`
-      SELECT id, username, password 
+      SELECT id, username, hash 
       FROM profile
       WHERE username = $1;
     `,
     [username]
     )
       .then(result => {
-        if(result.rows.length === 0 || result.rows[0].password !== password) {
+        const profile = result.rows[0];
+        if(!profile || !bcrypt.compareSync(password, profile.hash)) {
           res.status(400).json({ error: 'information incorrect' });
           return;
         }

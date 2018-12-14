@@ -7,20 +7,7 @@
         Need to register?
         <button @click="method = 'signup'">Sign Up</button>
       </p>
-
-      <form @submit.prevent="handleSignInSubmit(profile)">
-        <label>
-          Username:
-          <input v-model="profile.username" required>
-        </label>
-        <label>
-          Password:
-          <input type="password" v-model="profile.password" required>
-        </label>
-        <label>
-          <button>Sign In</button>
-        </label>
-      </form>
+      <CredentialsForm prompt="Sign In" :onSubmit="handleSignIn"/>
     </div>
 
     <div v-else>
@@ -31,25 +18,15 @@
         <button @click="method = 'signin'">Sign In</button>
       </p>
 
-      <form @submit.prevent="handleSignUpSubmit(profile)">
-        <label>
-          Username:
-          <input v-model="profile.username" required>
-        </label>
-        <label>
-          Password:
-          <input type="password" v-model="profile.password" required>
-        </label>
-        <label>
-          <button>Sign Up</button>
-        </label>
-      </form>
+      <CredentialsForm prompt="Sign Up" :onSubmit="handleSignUp"/>
     </div>
     <pre v-if="error">{{error}}</pre>
   </section>
 </template>
 
 <script>
+import CredentialsForm from './CredentialsForm';
+
 export default {
   props: {
     onSignIn: Function,
@@ -58,24 +35,23 @@ export default {
   data() {
     return {
       method: 'signin',
-      error: '',
-      profile: {
-        username: '',
-        password: ''
-      }
+      error: ''
     };
   },
+  components: {
+    CredentialsForm
+  },
   methods: {
-    handleSignInSubmit() {
+    handleSignIn(profile) {
       this.error = '';
-      this.onSignIn(this.profile)
+      this.onSignIn(profile)
         .catch(error => {
           this.error = error.error;
         });
     },
-    handleSignUpSubmit() {
+    handleSignUp(profile) {
       this.error = '';
-      this.onSignUp(this.profile)
+      this.onSignUp(profile)
         .catch(error => {
           this.error = error.error;
         });
