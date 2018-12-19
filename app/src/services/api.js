@@ -50,15 +50,15 @@ export default {
             return Promise.reject(error);
           });
       });
-    },
+  },
     
   getDogs() {
-      return fetch('/api/dogs', getOptions('GET'))
-        .then(response => response.json());      
+    return fetch('/api/dogs', getOptions('GET'))
+      .then(response => response.json());      
   },
 
   addDog(dog) {
-      return fetch('/api/dogs', getOptions('POST', dog))
-        .then(response => response.json());
+    return fetch('/api/dogs', getOptions('POST', dog))
+      .then(response => response.json());
   }
 };
